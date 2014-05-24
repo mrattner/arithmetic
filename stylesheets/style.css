@@ -1,0 +1,7 @@
+#previous {
+	color: #990000;
+}
+
+#previous.correct {
+	color: #009900;
+}

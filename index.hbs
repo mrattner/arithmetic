@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>Arithmetic: alpha</title>
+</head>
+<body>
+<h1>Arithmetic</h1>
+
+<script id="start-view" type="text/x-handlebars-template">
+	<section id="intro">
+		<h2>Train your brain to do mental math</h2>
+
+		<p>Written in <a href="http://www.typescriptlang.org/" title="TypeScript language"
+				target="_blank">TypeScript</a> using <a href="http://jquery.com/"
+				title="JQuery DOM manipulation library" target="_blank">jQuery</a> and <a href="http://backbonejs.org/"
+				title="Backbone framework" target="_blank">Backbone.js</a>.
+		</p>
+	</section>
+
+	<section id="instructions">
+		<h2>Instructions</h2>
+
+		<p>You will be given {{defaultProblems}} arithmetic problems of the types that you select: addition,
+			subtraction, multiplication, and/or division. Type the answer to each as it appears and press <code>
+				ENTER</code>.</p>
+
+		<p>If the answer you gave was incorrect, you may have additional attempts to answer the same problem correctly
+			before moving on to the next one, depending on the game settings. The default number of attempts is
+			{{defaultAttempts}}.</p>
+
+		<p>You can change the default number of problems and/or allowed number of attempts per problem before starting
+			the game, or define a time limit after which the game will end. In endless mode, you will be given new
+			problems until you decide to quit.</p>
+
+		<p>At any time, you may click the "Quit" button to go back to the intro screen.</p>
+
+		<button id="back-button">Back</button>
+	</section>
+
+	<form id="game-options">
+		<ul id="problem-types-list">
+			<li>
+				<input type="checkbox" id="addition" checked="true" />
+				<label for="addition">Addition problems</label>
+			</li>
+			<li>
+				<input type="checkbox" id="subtraction" checked="true" />
+				<label for="subtraction">Subtraction problems</label>
+			</li>
+			<li>
+				<input type="checkbox" id="multiplication" checked="true" />
+				<label for="multiplication">Multiplication problems</label>
+			</li>
+			<li>
+				<input type="checkbox" id="division" checked="true" />
+				<label for="division">Division problems</label>
+			</li>
+		</ul>
+
+		<input type="checkbox" id="endless" />
+		<label for="endless">Endless mode</label>
+
+		<ul id="limits">
+			<li>
+				<input type="checkbox" id="time-limit" checked="true" />
+				<label for="time-limit" hidden>Do you want a time limit to answer the problems?</label>
+				<label for="minutes">Time limit (minutes)</label>
+				<input type="number" id="minutes" value="{{defaultMinutes}}" min="1" step="1" />
+			</li>
+
+			<li>
+				<input type="checkbox" id="problems-limit" checked="true" />
+				<label for="problems-limit" hidden>Do you want a limit on the number of problems?</label>
+				<label for="num-problems">Number of problems</label>
+				<input type="number" id="num-problems" value="{{defaultProblems}}" min="1" step="1" />
+			</li>
+		</ul>
+
+		<input type="checkbox" id="attempts-limit" checked="true" />
+		<label for="attempts-limit">Skip to the next problem after</label>
+		<input type="number" id="attempts" value="{{defaultAttempts}}" min="1" step="1" />
+		<label for="attempts">attempts</label>
+
+
+	</form>
+	<button id="start-button">Start</button>
+	<button id="help-button">Instructions</button>
+
+</script>
+
+<script id="game-view" type="text/x-handlebars-template">
+	<div id="problems">{{> problems}}</div>
+	<input id="answer-box" type="number" />
+	<label for="answer-box" hidden>Answer</label>
+	<span id="incorrect">{{> message}}</span>
+	<div id="timer">{{> clock}}</div>
+	<button id="quit-button">Quit</button>
+</script>
+
+<script id="problems-partial" type="text/x-handlebars-template">
+	<div id="previous">
+		{{previousProblem.text}}
+	</div>
+	<div id="current-problem">
+		{{currentProblem}}
+	</div>
+</script>
+
+<script id="message-partial" type="text/x-handlebars-template">
+	Incorrect. Attempts remaining:
+	<span>{{remainingAttempts}}</span>
+</script>
+
+<script id="clock-partial" type="text/x-handlebars-template">
+	{{time}}
+</script>
+
+<script id="endgame-view" type="text/x-handlebars-template">
+	<div id="endgame">
+		You answered {{problemsAnswered}} problems in {{time}}.
+	</div>
+	<button id="back-button">Back</button>
+</script>
+
+<div id="view-container"></div>
+
+<footer>&copy; 2014 Marcy Rattner</footer>
+
+</body>
+<script src="lib/js/jquery-1.11.1.min.js"></script>
+<script src="lib/js/underscore-min.js"></script>
+<script src="lib/js/backbone-min.js"></script>
+<script src="lib/js/handlebars-v1.3.0.js"></script>
+<script src="lib/js/moment.min.js"></script>
+<script src="app/javascripts/Rand.js"></script>
+<script src="app/javascripts/Arithmetic.js"></script>
+<script src="app/javascripts/Time.js"></script>
+<script src="app/javascripts/Model.js"></script>
+<script src="app/javascripts/View.js"></script>
+<script src="app/javascripts/App.js"></script>
+<link type="text/css" rel="stylesheet" href="stylesheets/style.css">
+</html>
