@@ -1,3 +1,115 @@
+body{
+	color: #006666;
+	background: #f9ffff;
+	font-family: "Arial", sans-serif;
+	font-size: 0.8em;
+	margin-left: 1.5em;
+	padding-left: 2em;
+	border-left: 6px double #009999;
+}
+
+a:link, a:visited {
+	color: #009999;
+	text-decoration: none;
+}
+
+a:active, a:hover {
+	color: #00aabb;
+}
+
+h1 {
+	font-size: 4em;
+	text-transform: lowercase;
+	font-style: italic;
+	font-family: "Georgia", serif;
+	font-weight: bold;
+}
+
+h2 {
+	font-family: "Georgia", serif;
+	font-size: 2em;
+}
+
+code {
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+#game-options, #instructions p {
+	font-size: 1.2em;
+}
+
+#view-container {
+	width: 75%;
+	height: 78%;
+}
+
+#game-options, #instructions {
+	border: 1px dotted #006666;
+	margin: 1em;
+	padding: 0.5em 1em 1em;
+	text-align: justify;
+}
+
+ul {
+	list-style-type: none;
+	padding-left: 0;
+}
+
+#limits > li {
+	padding-left: 1em;
+	line-height: 2em;
+}
+
+div.attempts {
+	display:block;
+}
+
+input.numbox {
+	width: 3em;
+	height: 1.3em;
+	font-size: 1em;
+	font-weight: bold;
+	text-align: right;
+}
+
+button {
+	font-size: 2em;
+	padding: 0.25em 0.5em;
+	background: #006666;
+	border-radius: 0;
+	color: #ffffff;
+	border: 0;
+	text-transform: lowercase;
+}
+
+button:hover {
+	cursor: pointer;
+	background: #009999;
+	transition-duration: 0.3s;
+}
+
+button:active {
+	background: #00aabb;
+}
+
+#start-button, #help-button {
+	margin-bottom: 1em;
+}
+
+#start-button {
+	margin-left: 27%;
+}
+
+#back-button {
+	margin-left: 40%;
+}
+
+footer {
+	font-size: 0.5em;
+	padding: 1em;
+}
+
 #previous {
 	color: #990000;
 }
